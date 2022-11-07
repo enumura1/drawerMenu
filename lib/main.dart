@@ -1,38 +1,61 @@
 import 'package:flutter/material.dart';
-import 'drawer.dart';
 
 void main() {
-  final appBar = AppBar(
-    title: const Text('bar'),
-  );
-
-  const drawer = Drawer(
-    child: DrawerMenu(),
-  );
-
-  const body = Center(
-    child: Text('body'),
-  );
-
-  final scaffold = Scaffold(
-    appBar: appBar,
-    drawer: drawer,
-    body: body,
-  );
-
   final appContent = MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: scaffold,
+    home: DrawerMenu(),
   );
   runApp(appContent);
 }
 
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
+class DrawerMenu extends StatelessWidget {
+  const DrawerMenu({super.key});
 
-//   // This widget is the root of your application.
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container();
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      //bar
+      appBar: AppBar(
+        title: const Text('samplebar'),
+      ),
+      //drawer
+      drawer: Drawer(
+        width: 200,
+        child: ListView(
+          children: [
+            DrawerHeader(
+              child: Text("drawerHaeder"),
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 14, 211, 132),
+              ),
+            ),
+            ListTile(
+              title: Text("hoge1"),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: () {
+                debugPrint('tapped hoge1');
+              },
+            ),
+            ListTile(
+              title: Text("hoge2"),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: () {
+                debugPrint('tapped hoge1');
+              },
+            ),
+            ListTile(
+              title: Text("hoge3"),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: () {
+                debugPrint('tapped hoge1');
+              },
+            ),
+          ],
+        ),
+      ),
+      body: Center(
+        child: Text('sample'),
+      ),
+    );
+  }
+}
